@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 #\e[0;32m    or \x1b[0;32m    or \033[0;32m    #start
 #\e[m        or \x1b[m        or \033[m        #reset

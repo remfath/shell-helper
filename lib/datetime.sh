@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 # Loop date between the given range by asc sort
 function getDateRangeAsc() {
@@ -14,3 +15,9 @@ function getDateRangeAsc() {
     rangeStart=`date -d "+1 day $rangeStart" +%Y%m%d`
   done
 }
+
+
+
+############################### Example ###############################
+
+getDateRangeAsc 20170101 20170105 "echo hi"
