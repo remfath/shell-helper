@@ -60,6 +60,39 @@ function formatTime() {
     return 0
 }
 
+# Get first day of a month that the given date belongs to
+function getFirstDayOfMonth()
+{
+    local someDate=$1
+    local thisYearMonth=`date +"%Ym" -d "${someDate}"`
+    local firstDayOfDate="${thisYearMonth}01"
+
+    echo $firstDayOfDate
+    return 0
+}
+
+# Get the total days of a month that the given date belongs to
+function getTotalDaysOfMonth()
+{
+    local someDate=$1
+    local totalDays=`cal $(date +"%m %Y" -d "${someDate}") | awk 'NF {DAYS = $NF}; END {print DAYS}'`
+
+    echo $totalDays
+    return 0
+}
+
+# Get last day of a month that the given date belongs to
+function getLastDayOfMonth()
+{
+    local someDate=$1
+    local totalDays=$(getTotalDaysOfMonth "${someDate}")
+    local thisYearMonth=`date +"%Y%m" -d "${someDate}"`
+    local lastDayOfDate="${thisYearMonth}${totalDays}"
+
+    echo $lastDayOfDate
+    return 0
+}
+
 
 
 ############################### Example ###############################
