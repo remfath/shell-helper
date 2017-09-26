@@ -16,6 +16,22 @@ function getDateRangeAsc() {
   done
 }
 
+# Loop date between the given range by desc sort
+function getDateRangeDesc() {
+  local rangeStart=$1
+  local rangeEnd=$2
+  local doSomething=$3
+
+  rangeStart=`date -d "-1 day $rangeStart" +%Y%m%d`
+  while [[ $rangeEnd -gt $rangeStart ]]
+  do
+    echo $rangeEnd
+    $doSomething
+    wait
+    rangeEnd=`date -d "-1 day $rangeEnd" +%Y%m%d`
+  done
+}
+
 # Get hour part of a given second
 function getHourPart() {
     local totalSeconds=$1
@@ -97,4 +113,4 @@ function getLastDayOfMonth()
 
 ############################### Example ###############################
 
-getDateRangeAsc 20170101 20170105 "echo hi"
+getDateRangeDesc 20170101 20170105 ""
